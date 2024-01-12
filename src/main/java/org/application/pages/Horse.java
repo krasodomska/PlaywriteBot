@@ -2,78 +2,76 @@ package org.application.pages;
 
 import com.microsoft.playwright.Page;
 
-public abstract class Horse extends BasePage {
+public class Horse extends BasePage {
     public Horse(Page page) {
         super(page);
     }
+    
 
-    //.button-text-2 -> selector ozrebienie
-    //#poulain-1 -> gdzie wpisac  imie konika
-    //.button-text-0 -> selektor idz do źróbka
-    //#boutonAllaiter -> daj butle
-
-    public Horse giveWater() {
+    protected Horse giveWater() {
         page.locator("#boutonBoire").click();
         return this;
     }
 
-    public Horse pet() {
+    protected Horse pet() {
         page.locator("#boutonCaresser").click();
         return this;
     }
 
-    public Horse giveCarrot() {
+    protected Horse giveCarrot() {
         page.locator("#boutonCarotte").click();
         return this;
     }
 
-    public Horse groom() {
+    protected Horse groom() {
         page.locator("#boutonPanser").click();
         return this;
     }
 
-    public Horse giveEnergizer() {
+    protected Horse giveEnergizer() {
         page.locator("#boutonMash").click();
         return this;
     }
 
-    public Horse giveFood() {
+    protected Horse giveFood() {
         page.locator("#boutonNourrir").click();
         Integer foodAmount = 0;
-        if(!page.getByText("Uwaga: jeden z Twoich koni ma niedowagę").isVisible())
-        {
+        if (!page.getByText("Uwaga:").isVisible()) {
             foodAmount = Integer.parseInt(page.locator("strong.section-fourrage").textContent().trim()) + 1;
-        }
-        else {
+        } else {
             foodAmount = 21;
         }
         String foodLocator = String.format("#haySlider > ol:nth-child(1) > li:nth-child(%d) > span", foodAmount);
         page.locator(foodLocator).click();
-
-        Integer oatsAmount = Integer.parseInt(page.locator("strong.section-avoine").textContent().trim()) + 1;
-        String oatsLocator = String.format("#oatsSlider > ol:nth-child(1) > li:nth-child(%d) > span", oatsAmount);
-        page.locator(oatsLocator).click();
+        try{
+            Integer oatsAmount = Integer.parseInt(page.locator("strong.section-avoine").textContent().trim()) + 1;
+            String oatsLocator = String.format("#oatsSlider > ol:nth-child(1) > li:nth-child(%d) > span", oatsAmount);
+            page.locator(oatsLocator).click();
+        }
+        catch (Exception e) {
+            System.out.println("Im teenager");
+        }
 
         page.locator("#feed-button > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)").click();
         return this;
     }
 
-    public Horse work() {
-        if(page.locator("#boutonMissionMontagne").isVisible()) page.locator("#boutonMissionMontagne").click();
-        if(page.locator("#boutonMissionEquus").isVisible()) page.locator("#boutonMissionEquus").click();
-        if(page.locator("#boutonMissionForet").isVisible()) page.locator("#boutonMissionForet").click();
+    protected Horse work() {
+        if (page.locator("#boutonMissionMontagne").isVisible()) page.locator("#boutonMissionMontagne").click();
+        if (page.locator("#boutonMissionEquus").isVisible()) page.locator("#boutonMissionEquus").click();
+        if (page.locator("#boutonMissionForet").isVisible()) page.locator("#boutonMissionForet").click();
+        System.out.println("I was working");
         return this;
     }
 
-    public Horse sleepTime() {
+    protected Horse sleepTime() {
         page.locator("#boutonCoucher").click();
         return this;
     }
 
 
-
-    public Horse stableCheck() {
-        if(page.getByText("Zarejestruj swojego konia w ośrodku jeździeckim, aby położyć go spać już teraz!").isVisible()) {
+    protected Horse stableCheck() {
+        if (page.getByText("Zarejestruj swojego konia w ośrodku jeździeckim, aby położyć go spać już teraz!").isVisible()) {
             page.locator(".action-style-2 > span:nth-child(1)").click();
             page.locator("#fourrageCheckbox").click();
             page.locator("#avoineCheckbox").click();
@@ -89,36 +87,36 @@ public abstract class Horse extends BasePage {
     }
 
 
-    public void competitionRoutine(String competitionSelector) {
-        for (int i = 0; i < 3; i++) {
-            page.locator(competitionSelector).click();
-            page.getByText("Weź udział w zawodach").first().click(); //take participation in competition
-        }
-        this.work()
-                .pet()
-                .groom()
-                .giveCarrot()
-                .giveWater()
-                .sleepTime();
-
-        page.locator(competitionSelector).click();
-        page.getByText("Weź udział w zawodach").first().click();
-        this.giveFood();
-    }
-
-    public void logRoutine(String nameOfHorse){
-        System.out.println("dailyRoutine:" + nameOfHorse);
-        ImABotNotTest.setPlusOneHowManyHorse();
-        ImABotNotTest.setLastHorse(page.url());
-        AllHorsePage.horseNumber++;
-    }
-
-    public Horse goGrandPrix() {
-        page.locator("td.bottom:nth-child(2)").click();
-        page.locator(".button-text-2").click();
+    public Horse nextHorse() {
+        page.click("#nav-next");
         return this;
     }
 
-    public abstract Horse dailyRoutine();
+
+
+    protected Horse giveMilk() {
+        page.locator("#boutonAllaiter").click();
+        return this;
+    }
+
+
+
+    //    protected Horse play(){
+//        page.locator("#boutonJouer").click();
+/////#centerPlaySlider > ol:nth-child(1) > li:nth-child(21) > span:nth-child(1)
+//        int hoursToPlay = 21;
+//        String playLocator = String.format("#oatsSlider > ol:nth-child(1) > li:nth-child(%d) > span", hoursToPlay);
+//        if(page.locator(playLocator).isVisible())
+//        return this;
+//    }
+
+
+    protected Horse checkHealth(){
+        int health = Integer.parseInt(page.locator("#sante").textContent().trim());
+        if(health < 50) System.out.println("Alert health: "+ health +"my url: "+page.url());
+        else {System.out.println("My health: "+health);}
+        return this;
+
+    }
 
 }

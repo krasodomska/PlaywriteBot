@@ -4,7 +4,7 @@ import com.microsoft.playwright.Page;
 import org.application.game.PlayerSettings;
 
 public class EntryPage extends BasePage {
-    private final String address = "https://www.howrse.pl/";
+    protected final String address = "https://www.howrse.pl/";
     public EntryPage(Page page) {
         super(page);
     }
@@ -38,9 +38,14 @@ public class EntryPage extends BasePage {
         return this;
     }
 
-    public AllHorsePage goToHorse() {
+    public MainManager goToHorse() {
         page.navigate("https://www.howrse.pl/elevage/chevaux/?elevage=all-horses");
-        return new AllHorsePage(page);
+        return new MainManager();
+    }
+
+    public MainManager goToHorseLink(String horseLink) {
+        page.navigate(horseLink);
+        return new MainManager();
     }
 
 
