@@ -9,12 +9,14 @@ public class HorseRoutine extends Horse{
 
     public HorseRoutine giveBirth() {
         page.locator(".button-text-2").click();
+
         page.locator("#poulain-1").fill("Maly");
         page.locator(".button-text-0").click();
         page.navigate(ImABotNotTest.getLastHorse());
         return this;
     }
     public void competitionRoutine(String competitionSelector) {
+        if(this.sleepMode()) return;
         this.work();
         for (int i = 0; i < 3; i++) {
             page.locator(competitionSelector).click();
@@ -41,6 +43,7 @@ public class HorseRoutine extends Horse{
     }
 
     public HorseRoutine workRoutine() {
+        if(this.sleepMode()) return this;
         this.work()
                 .pet()
                 .groom()
@@ -51,12 +54,14 @@ public class HorseRoutine extends Horse{
     }
 
     public HorseRoutine goGrandPrix() {
+        if(this.sleepMode()) return this;
         page.locator("td.bottom:nth-child(2)").click();
         page.locator(".button-text-2").click();
         return this;
     }
 
     public HorseRoutine foalCare() {
+        if(this.sleepMode()) return this;
 
         this
                 .giveMilk()

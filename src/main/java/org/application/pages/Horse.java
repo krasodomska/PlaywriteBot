@@ -6,7 +6,7 @@ public class Horse extends BasePage {
     public Horse(Page page) {
         super(page);
     }
-    
+
 
     protected Horse giveWater() {
         page.locator("#boutonBoire").click();
@@ -36,19 +36,19 @@ public class Horse extends BasePage {
     protected Horse giveFood() {
         page.locator("#boutonNourrir").click();
         Integer foodAmount = 0;
-        if (!page.getByText("Uwaga:").isVisible()) {
+        if (!page.getByText("Uwaga:").isVisible() && !page.getByText("Nie karm").isVisible()) {
             foodAmount = Integer.parseInt(page.locator("strong.section-fourrage").textContent().trim()) + 1;
-        } else {
+        } else if (!page.getByText("Nie karm").isVisible()) {
             foodAmount = 21;
         }
+
         String foodLocator = String.format("#haySlider > ol:nth-child(1) > li:nth-child(%d) > span", foodAmount);
         page.locator(foodLocator).click();
-        try{
+        try {
             Integer oatsAmount = Integer.parseInt(page.locator("strong.section-avoine").textContent().trim()) + 1;
             String oatsLocator = String.format("#oatsSlider > ol:nth-child(1) > li:nth-child(%d) > span", oatsAmount);
             page.locator(oatsLocator).click();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Im teenager");
         }
 
@@ -93,28 +93,22 @@ public class Horse extends BasePage {
     }
 
 
-
     protected Horse giveMilk() {
         page.locator("#boutonAllaiter").click();
         return this;
     }
 
+    protected boolean sleepMode() {
+        return page.locator("#boutonCoucher").getAttribute("class").contains("action-disabled") && !page.getByText("Poślij").isVisible();
+    }
 
 
-    //    protected Horse play(){
-//        page.locator("#boutonJouer").click();
-/////#centerPlaySlider > ol:nth-child(1) > li:nth-child(21) > span:nth-child(1)
-//        int hoursToPlay = 21;
-//        String playLocator = String.format("#oatsSlider > ol:nth-child(1) > li:nth-child(%d) > span", hoursToPlay);
-//        if(page.locator(playLocator).isVisible())
-//        return this;
-//    }
-
-
-    protected Horse checkHealth(){
+    protected Horse checkHealth() {
         int health = Integer.parseInt(page.locator("#sante").textContent().trim());
-        if(health < 50) System.out.println("Alert health: "+ health +"my url: "+page.url());
-        else {System.out.println("My health: "+health);}
+        if (health < 50) System.out.println("Alert health: " + health + "my url: " + page.url());
+        else {
+            System.out.println("My health: " + health);
+        }
         return this;
 
     }

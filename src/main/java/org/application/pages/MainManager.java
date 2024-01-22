@@ -8,7 +8,7 @@ public class MainManager {
 
 
     protected MainManager horseCare(){
-        while(horseNumber < 50) {
+        while(horseNumber < 150) {
             HorseManager manager = new HorseManager(page);
             if (ImABotNotTest.getHowManyHorse() < 10) {
                 manager.horseManager(page.locator(".horse-name").textContent().trim());

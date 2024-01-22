@@ -2,7 +2,7 @@ package org.application.pages;
 
 public class ImABotNotTest {
     protected static ImABotNotTest INSTANCE;
-    protected static String lastHorse = "https://www.howrse.pl/elevage/chevaux/cheval?id=50047097&go=next&elevage=&comparaison=Galoper&tri=cleanName";
+    protected static String lastHorse = "https://www.howrse.pl/elevage/chevaux/cheval?id=51451579&go=next&elevage=&comparaison=Bieg&tri=cleanName";
     protected static int howManyHorse = 0;
 
     protected ImABotNotTest() {

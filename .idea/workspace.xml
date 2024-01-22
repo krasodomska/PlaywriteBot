@@ -5,22 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1514ee9b-fee6-4bdf-a8db-c52508e08090" name="Changes" comment="Sketch of my project before big rework">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/game/PlayerSettings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/pages/HorseManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/pages/HorseRoutine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/application/pages/MainManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/pages/AllHorsePage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/pages/DraftHorse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/pages/EntryPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/pages/EntryPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/pages/GPHorse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/pages/GodHorses.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/game/PlayerSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/game/PlayerSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/application/pages/Horse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/pages/Horse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/pages/HorseSwitch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/pages/HorseRoutine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/pages/HorseRoutine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/application/pages/ImABotNotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/pages/ImABotNotTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/pages/SideBreedHorse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/application/pages/MainManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/application/pages/MainManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704365324040</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Sketch of my project before big rework">
+      <created>1705067904866</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1705067904866</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,5 +144,21 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Sketch of my project before big rework" />
     <option name="LAST_COMMIT_MESSAGE" value="Sketch of my project before big rework" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/application/pages/HorseManager.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/application/pages/Horse.java</url>
+          <line>101</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
